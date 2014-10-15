@@ -7,7 +7,7 @@ class ShortenedUrlsController < ApplicationController
 
   def redirect
     if @shortened_url
-      redirect_to @shortened_url.shortened
+      redirect_to @shortened_url.original
     else
       not_found
     end
@@ -37,7 +37,7 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def set_shortened_url_by_url
-    @shortened_url = ShortenedUrl.find_by shortened: params[:id]
+    @shortened_url = ShortenedUrl.where(shortened: BASE_PATH + "/" + params[:id]).first
   end
 
   def shortened_url_params
