@@ -24,6 +24,7 @@ class ShortenedUrlsController < ApplicationController
 
     respond_to do |format|
       if @shortened_url.save
+        format.js
         format.html { redirect_to action: :show, id: @shortened_url.id, notice: 'Yeah!' }
       else
         format.html { render :new }
