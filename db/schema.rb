@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015082625) do
+ActiveRecord::Schema.define(version: 20141015090008) do
+
+  create_table "shortened_urls", force: true do |t|
+    t.string   "original"
+    t.string   "shortened"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shortened_urls", ["user_id"], name: "index_shortened_urls_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
