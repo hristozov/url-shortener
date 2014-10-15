@@ -20,3 +20,4 @@
 
 # coverage reports
 /coverage
+/spec/coverage
