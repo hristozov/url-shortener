@@ -12,4 +12,8 @@ module ApplicationHelper
   def is_at_sign_in?
     false
   end
+
+  def is_signed_in?
+    !!current_user
+  end
 end

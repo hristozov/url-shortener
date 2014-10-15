@@ -1,9 +1,11 @@
 <div id="shorten-page-container" class="container">
   <div class="center-block" style="width: 600px;">
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" placeholder="Your URL">
+      <input type="text" class="form-control"
+             <% unless is_signed_in? %>disabled<% end %>
+             placeholder="<% if is_signed_in? %>Your URL<% else %>Your URL (login first)<% end %>">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
+        <button class="btn btn-default <% unless is_signed_in? %>disabled<% end %>" type="button">Go!</button>
       </span>
     </div>
   </div>
