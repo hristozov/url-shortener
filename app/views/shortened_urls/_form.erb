@@ -1,0 +1,18 @@
+<%= form_for @shortened_url do |f| %>
+    <div id="shorten-page-container" class="container">
+      <div class="center-block" style="width: 600px;">
+        <div class="input-group input-group-lg">
+          <%= f.text_field :original, {
+                  class: "form-control",
+                  disabled: !is_signed_in?,
+                  placeholder: is_signed_in? ? "Your URL" : "Log in first!"
+          } %>
+          <span class="input-group-btn">
+            <%= f.submit label="Shorten!", {
+                    class: "btn btn-default"
+            } %>
+          </span>
+        </div>
+      </div>
+    </div>
+<% end %>
