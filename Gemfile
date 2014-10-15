@@ -28,10 +28,13 @@ gem 'spring',        group: :development
 
 gem 'devise'
 group :development, :test do
+  gem 'capybara'
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'timecop'
   gem 'simplecov'
   gem 'factory_girl_rails'
+  gem 'guard-rspec'
 end
 
 # Use ActiveModel has_secure_password

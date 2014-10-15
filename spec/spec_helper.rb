@@ -1,5 +1,8 @@
 require 'factory_girl'
 require 'simplecov'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 
 SimpleCov.start 'rails'
 
