@@ -15,7 +15,27 @@ describe ShortenedUrlsController do
     end
 
     it "should return not_found if an attempt is made to redirect to a non-existent URL" do
-      expect {get :redirect, id: "123"}.to raise_error(ActionController::RoutingError)
+      expect { get :redirect, id: "123" }.to raise_error(ActionController::RoutingError)
+    end
+
+    it "should create new instances" do
+      get :new
+      expect(assigns(:shortened_url)).to be_a_new(ShortenedUrl)
+    end
+
+    it "should save new instances" do
+      allow(controller).to receive(:current_user) { create(:user, {email: "yolo@dir.bg", password: "zzzaaacc"}) }
+      expect {
+        post :create, shortened_url: attributes_for(:shortened_url, {original: "proba"})
+      }.to change(ShortenedUrl, :count).by(1)
+      expect(response).to redirect_to action: :show, id: assigns(:shortened_url).id, notice: 'Yeah!'
+    end
+
+    it "should re-render on save error" do
+      allow(controller).to receive(:current_user) { create(:user, {email: "yolo@dir.bg", password: "zzzaaacc"}) }
+      allow_any_instance_of(ShortenedUrl).to receive(:save) { false }
+      post :create, shortened_url: attributes_for(:shortened_url, {original: "proba"})
+      expect(response).to render_template :new
     end
   end
 end

@@ -30,6 +30,7 @@ gem 'devise'
 group :development, :test do
   gem 'rspec-rails'
   gem 'timecop'
+  gem 'simplecov'
   gem 'factory_girl_rails'
 end
 
