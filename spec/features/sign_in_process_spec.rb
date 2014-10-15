@@ -1,17 +1,15 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 feature "the signin process" do
   before :each do
-    build(:user, {:email => 'user@example.com', :password => 'password'})
+    Warden.test_mode!
   end
 
-  scenario "signs me in" do
-    visit '/users/sign_in'
-    within("#new_user") do
-      fill_in 'Email', :with => 'user@example.com'
-      fill_in 'Password', :with => 'password'
-    end
-    click_button 'Log in'
-    expect(page).to have_content 'Signed in successfully.'
+  scenario "display a warning if already signed in" do
+    login_as build(:user, {:email => "user@example.com", :password => "password"})
+    visit "/users/sign_in"
+    expect(current_path).to eq("/")
+    expect(page).to have_content "You are already signed in."
   end
 end

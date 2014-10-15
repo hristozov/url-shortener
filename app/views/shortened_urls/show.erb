@@ -1,8 +1,8 @@
 <div id="shorten-page-container" class="container">
   <div class="center-block" style="width: 600px;">
     <div class="input-group">
-      <input type="text" class="form-control" value="<%= @shortened_url.original %>" disabled style="width: 600px">
-      <input type="text" class="form-control" value="<%= @shortened_url.shortened %>" disabled style="width: 600px">
+      <input id="from-url" type="text" class="form-control" value="<%= @shortened_url.original %>" disabled style="width: 600px">
+      <input id="to-url" type="text" class="form-control" value="<%= @shortened_url.shortened %>" disabled style="width: 600px">
     </div>
     <%= link_to "Back", :root, {
             class: "btn btn-default"

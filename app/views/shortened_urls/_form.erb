@@ -1,4 +1,4 @@
-<%= form_for @shortened_url, remote: true do |f| %>
+<%= form_for @shortened_url do |f| %>
     <div id="shorten-page-container" class="container">
       <div class="center-block" style="width: 600px;">
         <div class="input-group input-group-lg">
@@ -9,7 +9,8 @@
           } %>
           <span class="input-group-btn">
             <%= f.submit label="Shorten!", {
-                    class: "btn btn-default"
+                    class: "btn btn-default",
+                    disabled: !is_signed_in?,
             } %>
           </span>
         </div>
