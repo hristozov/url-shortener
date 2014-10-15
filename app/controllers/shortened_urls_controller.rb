@@ -1,7 +1,16 @@
 class ShortenedUrlsController < ApplicationController
-  before_action :set_shortened_url, only: [:show]
+  before_action :set_shortened_url_by_id, only: [:show]
+  before_action :set_shortened_url_by_url, only: [:redirect]
 
   def show
+  end
+
+  def redirect
+    if @shortened_url
+      redirect_to @shortened_url.shortened
+    else
+      not_found
+    end
   end
 
   def new
@@ -11,6 +20,7 @@ class ShortenedUrlsController < ApplicationController
   def create
     @shortened_url = ShortenedUrl.new(shortened_url_params)
     @shortened_url.user_id = current_user.id
+    @shortened_url.shorten!
 
     respond_to do |format|
       if @shortened_url.save
@@ -19,13 +29,15 @@ class ShortenedUrlsController < ApplicationController
         format.html { render :new }
       end
     end
-
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_shortened_url
+  def set_shortened_url_by_id
     @shortened_url = ShortenedUrl.find(params[:id])
+  end
+
+  def set_shortened_url_by_url
+    @shortened_url = ShortenedUrl.find_by shortened: params[:id]
   end
 
   def shortened_url_params

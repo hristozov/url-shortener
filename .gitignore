@@ -17,3 +17,6 @@
 
 # ignore IDEA shit
 /.idea
+
+# coverage reports
+/coverage
