@@ -4,6 +4,12 @@ class ShortenedUrlsController < ApplicationController
   before_action :set_shortened_url_by_url, only: [:redirect]
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf {
+        render pdf: "contents"
+      }
+    end
   end
 
   def redirect

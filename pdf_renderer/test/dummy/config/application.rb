@@ -2,13 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+require "pdf_renderer"
 
-require 'pdf_renderer'
-
-module UrlShortener
+module Dummy
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -23,3 +20,4 @@ module UrlShortener
     # config.i18n.default_locale = :de
   end
 end
+
