@@ -35,6 +35,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
+  gem 'rubocop'
 end
 
 # Use ActiveModel has_secure_password
