@@ -21,3 +21,7 @@
 # coverage reports
 /coverage
 /spec/coverage
+
+# ctags shit
+.tags
+.tags_sorted_by_file
