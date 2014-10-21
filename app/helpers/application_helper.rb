@@ -1,17 +1,15 @@
 # Global helpers for the application.
 module ApplicationHelper
   def at_home?
-    # XXX
-    # current_page?(:controller => 'shortened_urls', :action => 'index')
-    true
+    current_page? ("/")
   end
 
   def at_sign_up?
-    false
+    current_page? ('/users/sign_up')
   end
 
   def at_sign_in?
-    false
+    current_page? ('/users/sign_in')
   end
 
   def signed_in?
