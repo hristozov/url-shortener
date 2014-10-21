@@ -23,18 +23,18 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li <% if is_at_home? %> class="active" <% end %>>
+        <li <% if at_home? %> class="active" <% end %>>
           <%= link_to "Home", :root %>
         </li>
-        <% if is_signed_in? %>
+        <% if signed_in? %>
             <li>
               <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
             </li>
         <% else %>
-            <li <% if is_at_sign_in? %> class="active" <% end %>>
+            <li <% if at_sign_in? %> class="active" <% end %>>
               <%= link_to "Sign in", new_user_session_path %>
             </li>
-            <li <% if is_at_sign_up? %> class="active" <% end %>>
+            <li <% if at_sign_up? %> class="active" <% end %>>
               <%= link_to "Register", new_user_registration_path %>
             </li>
         <% end %>

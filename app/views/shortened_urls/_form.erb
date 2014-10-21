@@ -4,13 +4,13 @@
         <div class="input-group input-group-lg">
           <%= f.text_field :original, {
                   class: "form-control",
-                  disabled: !is_signed_in?,
-                  placeholder: is_signed_in? ? "Your URL" : "Log in first!"
+                  disabled: !signed_in?,
+                  placeholder: signed_in? ? "Your URL" : "Log in first!"
           } %>
           <span class="input-group-btn">
             <%= f.submit label="Shorten!", {
                     class: "btn btn-default",
-                    disabled: !is_signed_in?,
+                    disabled: !signed_in?,
             } %>
           </span>
         </div>

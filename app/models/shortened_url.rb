@@ -1,3 +1,4 @@
+# Represents a shortened URL.
 class ShortenedUrl < ActiveRecord::Base
   belongs_to :user
 

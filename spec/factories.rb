@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :shortened_url do
-    original ""
+    original ''
   end
 
   factory :user do

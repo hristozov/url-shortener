@@ -1,3 +1,4 @@
+# Handles URL shortening requests.
 class ShortenedUrlsController < ApplicationController
   before_action :set_shortened_url_by_id, only: [:show]
   before_action :set_shortened_url_by_url, only: [:redirect]
@@ -14,18 +15,19 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def new
-    @shortened_url = ShortenedUrl.new();
+    @shortened_url = ShortenedUrl.new
   end
 
   def create
     @shortened_url = ShortenedUrl.new(shortened_url_params)
     @shortened_url.user_id = current_user.id
     @shortened_url.shorten!
+    new_id = @shortened_url.id
 
     respond_to do |format|
       if @shortened_url.save
         format.js
-        format.html { redirect_to action: :show, id: @shortened_url.id, notice: 'Yeah!' }
+        format.html { redirect_to action: :show, id: new_id, notice: 'Yeah!' }
       else
         format.html { render :new }
       end
@@ -33,12 +35,14 @@ class ShortenedUrlsController < ApplicationController
   end
 
   private
+
   def set_shortened_url_by_id
     @shortened_url = ShortenedUrl.find(params[:id])
   end
 
   def set_shortened_url_by_url
-    @shortened_url = ShortenedUrl.where(shortened: BASE_PATH + "/" + params[:id]).first
+    shortened_url_raw = BASE_PATH + '/' + params[:id]
+    @shortened_url = ShortenedUrl.where(shortened: shortened_url_raw).first
   end
 
   def shortened_url_params
