@@ -1,7 +1,7 @@
 # Global helpers for the application.
 module ApplicationHelper
   def at_home?
-    current_page? ("/")
+    current_page? ('/')
   end
 
   def at_sign_up?
