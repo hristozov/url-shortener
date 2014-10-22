@@ -38,6 +38,11 @@ non-existent URL' do
       expect(response).to redirect_to action: :show,
                                       id: assigns(:shortened_url).id,
                                       notice: 'Yeah!'
+
+      mail = ActionMailer::Base.deliveries[0]
+      expect(mail.subject).to eq('Shortened')
+      expect(mail.to).to eq(['yolo@dir.bg'])
+      expect(mail.from).to eq(['proba@proba.com'])
     end
 
     it 'should re-render on save error' do

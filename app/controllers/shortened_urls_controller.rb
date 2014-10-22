@@ -26,9 +26,12 @@ class ShortenedUrlsController < ApplicationController
 
   def create
     @shortened_url = ShortenedUrl.new(shortened_url_params)
-    @shortened_url.user_id = current_user.id
+    user = current_user
+    @shortened_url.user_id = user.id
     @shortened_url.shorten!
     new_id = @shortened_url.id
+
+    ShorteningNotifier.shortened(user, @shortened_url).deliver
 
     respond_to do |format|
       if @shortened_url.save

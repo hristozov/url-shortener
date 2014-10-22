@@ -43,5 +43,10 @@ feature 'the shortening process' do
     expect(page.find('input#from-url')[:value]).to eq('http://hit.bg/')
     expect(page.find('input#to-url')[:value])
     .to eq('http://localhost:3000/redirect/9cuif51a')
+
+    mail = ActionMailer::Base.deliveries[0]
+    expect(mail.subject).to eq('Shortened')
+    expect(mail.to).to eq(['yolo@dir.bg'])
+    expect(mail.from).to eq(['proba@proba.com'])
   end
 end
