@@ -1,3 +1,4 @@
+# Functionality for manipulating users.
 class UsersController < ApplicationController
   before_action :set_urls, only: [:show_profile]
   before_action :set_user, only: [:show_profile]
