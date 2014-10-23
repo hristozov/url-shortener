@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe UsersController do
   describe 'show_profile' do
-    it 'should bla' do
+    it 'should show user URLs properly' do
       user = create(:user,
                     email: 'ddd@dir.bg',
                     password: 'zzzaaacc',
