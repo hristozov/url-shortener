@@ -6,7 +6,7 @@ describe ShorteningNotifier, type: :mailer do
       ShorteningNotifier.shortened(
           create(:user, email: 'yolo@dir.bg', password: 'zzzaaacc'),
           create(:shortened_url,
-                 original: 'http://a.com/',
+                 original: 'http://a.com',
                  shortened: 'http://b.net'))
     end
 
@@ -17,8 +17,8 @@ describe ShorteningNotifier, type: :mailer do
     end
 
     it 'renders the body' do
-      expect(mail.body.encoded).to match %r{/Wow!\s*
-http://a\.com/ => http://b.net\s*}
+      expect(mail.body.encoded).to match %r{Wow!\s*
+http://a\.com => http://b.net\s*}
     end
   end
 end
