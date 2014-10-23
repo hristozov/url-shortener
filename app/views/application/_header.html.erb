@@ -1,0 +1,36 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "URL shortener", :root, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li <% if at_home? %> class="active" <% end %>>
+          <%= link_to "Home", :root %>
+        </li>
+        <% if signed_in? %>
+            <li <% if at_my_links? %> class="active" <% end %>>
+              <%= link_to "My links", users_me_path %>
+            </li>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </li>
+        <% else %>
+            <li <% if at_sign_in? %> class="active" <% end %>>
+              <%= link_to "Sign in", new_user_session_path %>
+            </li>
+            <li <% if at_sign_up? %> class="active" <% end %>>
+              <%= link_to "Register", new_user_registration_path %>
+            </li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</div>

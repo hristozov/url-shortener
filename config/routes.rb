@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root 'shortened_urls#new'
   get 'redirect/:id' => 'shortened_urls#redirect'
+  get 'users/me' => 'users#show_profile'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

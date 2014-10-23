@@ -12,6 +12,10 @@ module ApplicationHelper
     current_page? '/users/sign_in'
   end
 
+  def at_my_links?
+    current_page? '/users/me'
+  end
+
   def signed_in?
     current_user != nil
   end

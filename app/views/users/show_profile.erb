@@ -1,0 +1,15 @@
+Your email is <%= @user.email %>. Your ID is <%= @user.id %>.
+
+<div id="shorten-page-container" class="container">
+  <div class="center-block" style="width: 600px;">
+    <% @shortened_urls.each do |url| %>
+        <div class="input-group users-show-link-group">
+          <input type="text" class="form-control" value="<%= url.original %>" disabled style="width: 600px">
+          <input type="text" class="form-control" value="<%= url.shortened %>" disabled style="width: 600px">
+        </div>
+    <% end %>
+    <%= link_to "Back", :root, {
+            class: "btn btn-default"
+    } %>
+  </div>
+</div>
