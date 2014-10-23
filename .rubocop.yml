@@ -7,3 +7,8 @@ AllCops:
     - 'bin/**/*'
     - 'db/**/*'
     - 'spec/*_helper.rb'
+    - 'pdf_renderer/config/**/*'
+    - 'pdf_renderer/bin/**/*'
+    - 'pdf_renderer/db/**/*'
+    - 'pdf_renderer/test/*_helper.rb'
+    - 'pdf_renderer/test/dummy/**/*'

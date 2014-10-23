@@ -6,9 +6,7 @@ class ShortenedUrlsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf {
-        render pdf: "contents"
-      }
+      format.pdf { render pdf: 'contents' }
     end
   end
 

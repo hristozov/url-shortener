@@ -1,3 +1,4 @@
+# Responsible for notifying users when they have shortened an URL.
 class ShorteningNotifier < ActionMailer::Base
   default from: 'proba@proba.com'
 

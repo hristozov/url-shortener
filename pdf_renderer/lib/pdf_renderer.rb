@@ -1,3 +1,4 @@
+# Main PDF rendering module.
 module PdfRenderer
 end
 
