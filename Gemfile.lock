@@ -68,7 +68,11 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    em-websocket (0.5.1)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (2.2.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -83,12 +87,17 @@ GEM
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
+    guard-livereload (2.3.1)
+      em-websocket (~> 0.5)
+      guard (~> 2.0)
+      multi_json (~> 1.8)
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     hashery (2.1.1)
     hike (1.2.3)
     hitimes (1.2.2)
+    http_parser.rb (0.6.0)
     i18n (0.6.11)
     jbuilder (2.2.2)
       activesupport (>= 3.0.0, < 5)
@@ -135,6 +144,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-livereload (0.3.15)
+      rack
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.6)
@@ -243,11 +254,13 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   factory_girl_rails
+  guard-livereload
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
   pdf_renderer!
   poltergeist
+  rack-livereload
   rails (= 4.1.6)
   rspec-rails
   rubocop

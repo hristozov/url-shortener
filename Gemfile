@@ -37,6 +37,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'rubocop'
+  gem 'guard-livereload', require: false
+  gem 'rack-livereload'
 end
 
 # Use ActiveModel has_secure_password
